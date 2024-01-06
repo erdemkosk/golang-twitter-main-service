@@ -95,7 +95,7 @@ func (userService UserService) FollowUser(ctx context.Context, followerID, follo
 	}
 
 	follower.Following = append(follower.Following, followed.ID)
-	followed.Followers = append(followed.Followers, followed.ID)
+	followed.Followers = append(followed.Followers, follower.ID)
 
 	if err := userService.UpdateUser(ctx, *follower); err != nil {
 		return err
